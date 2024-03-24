@@ -18,6 +18,8 @@ import java.util.List;
 public interface BookingMapper {
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "creationTime", ignore = true)
+    @Mapping(target = "updateTime", ignore = true)
     Booking requestToBooking(BookingRequest bookingRequest, Room room, User user);
 
     @Mapping(source = "user.name", target = "userName")

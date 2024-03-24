@@ -1,0 +1,29 @@
+{
+  "hotelsAmount": 2,
+  "hotelResponseList": [
+    {
+      "id": 2,
+      "name": "hotel2",
+      "headline": "head2",
+      "city": "city2",
+      "address": "address2",
+      "distance": 1500,
+      "rating": 3.7,
+      "ratingsAmount": 40,
+      "creationTime": "2024-03-12T10:15:30Z",
+      "updateTime": "2024-03-12T10:15:30Z"
+    },
+    {
+      "id": 5,
+      "name": "hotel5",
+      "headline": "head5",
+      "city": "city5",
+      "address": "address5",
+      "distance": 900,
+      "rating": 4.0,
+      "ratingsAmount": 43,
+      "creationTime": "2024-03-15T10:15:30Z",
+      "updateTime": "2024-03-15T10:15:30Z"
+    }
+  ]
+}

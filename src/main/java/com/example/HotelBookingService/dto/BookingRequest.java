@@ -12,12 +12,12 @@ public class BookingRequest {
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Future(message = "Введенная дата заезда уже наступила")
-    LocalDate arrivalDate;
+    private LocalDate arrivalDate;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Future(message = "Введенная дата выезда уже наступила")
-    LocalDate departDate;
+    private LocalDate departDate;
 
     @Positive(message = "ID комнаты должен быть положительным числом")
-    long roomId;
+    private long roomId;
 }

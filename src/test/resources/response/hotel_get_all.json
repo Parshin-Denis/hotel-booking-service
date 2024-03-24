@@ -1,0 +1,113 @@
+{
+  "hotelsAmount": 9,
+  "hotelResponseList": [
+    {
+      "address": "address1",
+      "city": "city1",
+      "creationTime": "2024-03-11T10:15:30Z",
+      "distance": 1200,
+      "headline": "head1",
+      "id": 1,
+      "name": "hotel1",
+      "rating": 3.5,
+      "ratingsAmount": 41,
+      "updateTime": "2024-03-11T10:15:30Z"
+    },
+    {
+      "address": "address2",
+      "city": "city2",
+      "creationTime": "2024-03-12T10:15:30Z",
+      "distance": 1500,
+      "headline": "head2",
+      "id": 2,
+      "name": "hotel2",
+      "rating": 3.7,
+      "ratingsAmount": 40,
+      "updateTime": "2024-03-12T10:15:30Z"
+    },
+    {
+      "address": "address3",
+      "city": "city3",
+      "creationTime": "2024-03-13T10:15:30Z",
+      "distance": 500,
+      "headline": "head3",
+      "id": 3,
+      "name": "hotel3",
+      "rating": 4.2,
+      "ratingsAmount": 39,
+      "updateTime": "2024-03-13T10:15:30Z"
+    },
+    {
+      "address": "address4",
+      "city": "city4",
+      "creationTime": "2024-03-14T10:15:30Z",
+      "distance": 2100,
+      "headline": "head4",
+      "id": 4,
+      "name": "hotel4",
+      "rating": 4.5,
+      "ratingsAmount": 55,
+      "updateTime": "2024-03-14T10:15:30Z"
+    },
+    {
+      "address": "address5",
+      "city": "city5",
+      "creationTime": "2024-03-15T10:15:30Z",
+      "distance": 900,
+      "headline": "head5",
+      "id": 5,
+      "name": "hotel5",
+      "rating": 4.0,
+      "ratingsAmount": 43,
+      "updateTime": "2024-03-15T10:15:30Z"
+    },
+    {
+      "address": "filterTest",
+      "city": "city6",
+      "creationTime": "2024-03-16T10:15:30Z",
+      "distance": 1200,
+      "headline": "head6",
+      "id": 6,
+      "name": "hotel6",
+      "rating": 4.1,
+      "ratingsAmount": 49,
+      "updateTime": "2024-03-16T10:15:30Z"
+    },
+    {
+      "address": "address7",
+      "city": "filterTest",
+      "creationTime": "2024-03-17T10:15:30Z",
+      "distance": 700,
+      "headline": "head7",
+      "id": 7,
+      "name": "hotel7",
+      "rating": 4.8,
+      "ratingsAmount": 48,
+      "updateTime": "2024-03-17T10:15:30Z"
+    },
+    {
+      "address": "address8",
+      "city": "city8",
+      "creationTime": "2024-03-18T10:15:30Z",
+      "distance": 400,
+      "headline": "filterTest",
+      "id": 8,
+      "name": "hotel8",
+      "rating": 4.5,
+      "ratingsAmount": 47,
+      "updateTime": "2024-03-18T10:15:30Z"
+    },
+    {
+      "address": "address9",
+      "city": "city9",
+      "creationTime": "2024-03-19T10:15:30Z",
+      "distance": 200,
+      "headline": "head9",
+      "id": 9,
+      "name": "filterTest",
+      "rating": 5.0,
+      "ratingsAmount": 43,
+      "updateTime": "2024-03-19T10:15:30Z"
+    }
+  ]
+}

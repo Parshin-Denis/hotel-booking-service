@@ -1,6 +1,6 @@
 package com.example.HotelBookingService.statistics;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -8,10 +8,10 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class KafkaMessageListener {
 
-    @Autowired
-    private StatisticsService statisticsService;
+    private final StatisticsService statisticsService;
 
     @KafkaListener(topics = "${app.kafka.userTopic}", groupId = "${app.kafka.eventGroupId}",
     containerFactory = "userMessageConcurrentKafkaListenerContainerFactory")

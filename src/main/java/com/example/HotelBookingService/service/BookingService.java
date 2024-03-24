@@ -12,11 +12,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class BookingService {
 
     private final BookingRepository bookingRepository;
@@ -27,6 +30,7 @@ public class BookingService {
     private String topicName;
     private final KafkaTemplate<String, BookingMessage> bookingMessageKafkaTemplate;
 
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public BookingResponse book(String userName, BookingRequest bookingRequest) {
 
         if (!bookingRequest.getArrivalDate().isBefore(bookingRequest.getDepartDate())) {

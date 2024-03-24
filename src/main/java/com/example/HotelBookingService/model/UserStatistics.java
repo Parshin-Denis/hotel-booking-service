@@ -11,7 +11,7 @@ import java.time.Instant;
 public class UserStatistics {
 
     @Id
-    private long id;
+    private Long id;
 
     private Instant registrationTime;
 

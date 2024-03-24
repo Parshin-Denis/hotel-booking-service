@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "arrivalDate": "01/04/2024",
+    "departDate": "04/04/2024",
+    "userName": "Admin",
+    "hotelName": "hotel1",
+    "roomNumber": "n1",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 2,
+    "arrivalDate": "01/04/2024",
+    "departDate": "03/04/2024",
+    "userName": "User1",
+    "hotelName": "hotel1",
+    "roomNumber": "n2",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 3,
+    "arrivalDate": "06/04/2024",
+    "departDate": "08/04/2024",
+    "userName": "User1",
+    "hotelName": "hotel1",
+    "roomNumber": "n2",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 4,
+    "arrivalDate": "05/04/2024",
+    "departDate": "07/04/2024",
+    "userName": "User2",
+    "hotelName": "hotel1",
+    "roomNumber": "n4",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 5,
+    "arrivalDate": "04/04/2024",
+    "departDate": "05/04/2024",
+    "userName": "Admin",
+    "hotelName": "hotel1",
+    "roomNumber": "n5",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 6,
+    "arrivalDate": "10/04/2024",
+    "departDate": "13/04/2024",
+    "userName": "User2",
+    "hotelName": "hotel1",
+    "roomNumber": "n5",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 7,
+    "arrivalDate": "08/04/2024",
+    "departDate": "11/04/2024",
+    "userName": "User1",
+    "hotelName": "hotel1",
+    "roomNumber": "n6",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 8,
+    "arrivalDate": "12/04/2024",
+    "departDate": "15/04/2024",
+    "userName": "User1",
+    "hotelName": "hotel1",
+    "roomNumber": "n7",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 9,
+    "arrivalDate": "15/04/2024",
+    "departDate": "17/04/2024",
+    "userName": "User2",
+    "hotelName": "hotel1",
+    "roomNumber": "n8",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 10,
+    "arrivalDate": "20/04/2024",
+    "departDate": "21/04/2024",
+    "userName": "User2",
+    "hotelName": "hotel2",
+    "roomNumber": "n9",
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  }
+]

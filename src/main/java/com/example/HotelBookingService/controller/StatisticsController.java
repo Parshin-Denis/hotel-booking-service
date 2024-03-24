@@ -2,7 +2,7 @@ package com.example.HotelBookingService.controller;
 
 import com.example.HotelBookingService.statistics.StatisticsService;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/statistics")
+@RequiredArgsConstructor
 public class StatisticsController {
 
-    @Autowired
-    private StatisticsService statisticsService;
+    private final StatisticsService statisticsService;
 
     @Operation(summary = "Download the statistics files")
     @GetMapping

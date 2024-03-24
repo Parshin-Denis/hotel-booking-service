@@ -2,7 +2,10 @@ package com.example.HotelBookingService.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +15,7 @@ public class Hotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
 
@@ -22,11 +25,17 @@ public class Hotel {
 
     private String address;
 
-    private int distance;
+    private Integer distance;
 
-    private double rating;
+    private Double rating;
 
-    private int ratingsAmount;
+    private Integer ratingsAmount;
+
+    @CreationTimestamp
+    private Instant creationTime;
+
+    @UpdateTimestamp
+    private Instant updateTime;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
     private List<Room> rooms = new ArrayList<>();

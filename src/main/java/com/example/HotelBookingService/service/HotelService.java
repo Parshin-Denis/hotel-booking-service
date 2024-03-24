@@ -13,16 +13,20 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.MessageFormat;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class HotelService {
 
     private final HotelRepository hotelRepository;
     private final HotelMapper hotelMapper;
 
+    @Transactional
     public HotelResponse create(HotelRequest hotelRequest) {
         return hotelMapper.hotelToResponse(
                 hotelRepository.save(
@@ -42,6 +46,7 @@ public class HotelService {
         return hotelMapper.hotelToResponse(getById(id));
     }
 
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public HotelResponse update(long id, HotelRequest hotelRequest) {
         Hotel existedHotel = getById(id);
         Hotel updatedHotel = hotelMapper.requestToHotel(hotelRequest,
@@ -49,6 +54,7 @@ public class HotelService {
         return hotelMapper.hotelToResponse(hotelRepository.save(updatedHotel));
     }
 
+    @Transactional
     public void delete(long id) {
         hotelRepository.deleteById(id);
     }
@@ -57,13 +63,14 @@ public class HotelService {
         return hotelMapper.hotelListToHotelListResponse(hotelRepository.findAll(pageable).getContent());
     }
 
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public HotelResponse rate(long id, int mark) {
         if (mark < 1 || mark > 5) {
             throw new RequestParameterException("Оценка должна быть в диапазоне от 1 до 5");
         }
         Hotel hotel = getById(id);
         if (hotel.getRatingsAmount() == 0) {
-            hotel.setRating(mark);
+            hotel.setRating((double) mark);
             hotel.setRatingsAmount(1);
         } else {
             double totalRating = hotel.getRating() * hotel.getRatingsAmount() - hotel.getRating() + mark;

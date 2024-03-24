@@ -2,6 +2,7 @@ package com.example.HotelBookingService.dto;
 
 import lombok.Data;
 
+import java.time.Instant;
 import java.util.List;
 
 @Data
@@ -21,4 +22,8 @@ public class RoomResponse {
     private HotelResponse hotel;
 
     private List<BookingResponse> bookings;
+
+    private Instant creationTime;
+
+    private Instant updateTime;
 }

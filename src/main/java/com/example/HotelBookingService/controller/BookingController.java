@@ -5,7 +5,7 @@ import com.example.HotelBookingService.dto.BookingResponse;
 import com.example.HotelBookingService.service.BookingService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,10 +17,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/booking")
+@RequiredArgsConstructor
 public class BookingController {
 
-    @Autowired
-    private BookingService bookingService;
+    private final BookingService bookingService;
 
     @Operation(summary = "Book a room")
     @PostMapping

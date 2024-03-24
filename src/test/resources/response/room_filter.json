@@ -1,0 +1,80 @@
+[
+  {
+    "id": 2,
+    "name": "room2",
+    "description": "description2",
+    "number": "n2",
+    "price": 2200.0,
+    "maxPeopleNumber": 2,
+    "hotel": {
+      "id": 1,
+      "name": "hotel1",
+      "headline": "head1",
+      "city": "city1",
+      "address": "address1",
+      "distance": 1200,
+      "rating": 3.5,
+      "ratingsAmount": 41,
+      "creationTime": "2024-03-11T10:15:30Z",
+      "updateTime": "2024-03-11T10:15:30Z"
+    },
+    "bookings": [
+      {
+        "id": 2,
+        "arrivalDate": "01/04/2024",
+        "departDate": "03/04/2024",
+        "userName": "User1",
+        "hotelName": "hotel1",
+        "roomNumber": "n2",
+        "creationTime":"2024-03-11T10:15:30Z",
+        "updateTime":"2024-03-11T10:15:30Z"
+      },
+      {
+        "id": 3,
+        "arrivalDate": "06/04/2024",
+        "departDate": "08/04/2024",
+        "userName": "User1",
+        "hotelName": "hotel1",
+        "roomNumber": "n2",
+        "creationTime":"2024-03-11T10:15:30Z",
+        "updateTime":"2024-03-11T10:15:30Z"
+      }
+    ],
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  },
+  {
+    "id": 8,
+    "name": "room8",
+    "description": "description8",
+    "number": "n8",
+    "price": 3100.0,
+    "maxPeopleNumber": 2,
+    "hotel": {
+      "id": 1,
+      "name": "hotel1",
+      "headline": "head1",
+      "city": "city1",
+      "address": "address1",
+      "distance": 1200,
+      "rating": 3.5,
+      "ratingsAmount": 41,
+      "creationTime": "2024-03-11T10:15:30Z",
+      "updateTime": "2024-03-11T10:15:30Z"
+    },
+    "bookings": [
+      {
+        "id": 9,
+        "arrivalDate": "15/04/2024",
+        "departDate": "17/04/2024",
+        "userName": "User2",
+        "hotelName": "hotel1",
+        "roomNumber": "n8",
+        "creationTime":"2024-03-11T10:15:30Z",
+        "updateTime":"2024-03-11T10:15:30Z"
+      }
+    ],
+    "creationTime": "2024-03-11T10:15:30Z",
+    "updateTime": "2024-03-11T10:15:30Z"
+  }
+]

@@ -3,21 +3,26 @@ package com.example.HotelBookingService.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Data
 public class BookingResponse {
-    long id;
+    private long id;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    LocalDate arrivalDate;
+    private LocalDate arrivalDate;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    LocalDate departDate;
+    private LocalDate departDate;
 
-    String userName;
+    private String userName;
 
-    String hotelName;
+    private String hotelName;
 
-    String roomNumber;
+    private String roomNumber;
+
+    private Instant creationTime;
+
+    private Instant updateTime;
 }

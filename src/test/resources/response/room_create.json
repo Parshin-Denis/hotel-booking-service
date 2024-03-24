@@ -1,0 +1,23 @@
+{
+  "id": 11,
+  "name": "New name",
+  "description": "New description",
+  "number": "100A",
+  "price": 2500.0,
+  "maxPeopleNumber": 2,
+  "hotel": {
+    "address": "address2",
+    "city": "city2",
+    "creationTime": "2024-03-12T10:15:30Z",
+    "distance": 1500,
+    "headline": "head2",
+    "id": 2,
+    "name": "hotel2",
+    "rating": 3.7,
+    "ratingsAmount": 40,
+    "updateTime": "2024-03-12T10:15:30Z"
+  },
+  "bookings": [],
+  "creationTime": "2024-03-23T14:35:22.658530Z",
+  "updateTime": "2024-03-23T14:35:22.658530Z"
+}

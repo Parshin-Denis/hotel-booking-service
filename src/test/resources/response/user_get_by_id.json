@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "name": "Admin",
+  "password": "pass",
+  "email": "admin@email.com",
+  "role": "ROLE_ADMIN",
+  "creationTime": "2024-03-14T10:15:30Z",
+  "updateTime": "2024-03-14T10:15:30Z"
+}

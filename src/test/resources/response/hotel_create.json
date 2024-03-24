@@ -1,0 +1,12 @@
+{
+  "address": "New address",
+  "city": "New city",
+  "creationTime": "2024-03-11T10:15:30Z",
+  "distance": 1000,
+  "headline": "New headline",
+  "id": 10,
+  "name": "New name",
+  "rating": 0.0,
+  "ratingsAmount": 0,
+  "updateTime": "2024-03-11T10:15:30Z"
+}

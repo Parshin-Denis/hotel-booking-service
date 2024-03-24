@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "name": "updatedUser",
+  "password": "12345",
+  "email": "new@email.com",
+  "role": "ROLE_USER",
+  "creationTime": "2024-03-14T10:15:30Z",
+  "updateTime": "2024-03-14T10:15:30Z"
+}

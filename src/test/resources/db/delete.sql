@@ -1,0 +1,1 @@
+truncate table bookings, rooms, hotels, users restart identity;

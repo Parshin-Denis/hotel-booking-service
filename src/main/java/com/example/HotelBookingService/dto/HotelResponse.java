@@ -2,6 +2,8 @@ package com.example.HotelBookingService.dto;
 
 import lombok.Data;
 
+import java.time.Instant;
+
 @Data
 public class HotelResponse {
     private long id;
@@ -19,4 +21,8 @@ public class HotelResponse {
     private double rating;
 
     private int ratingsAmount;
+
+    private Instant creationTime;
+
+    private Instant updateTime;
 }

@@ -13,6 +13,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -20,11 +22,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class RoomService {
     private final RoomRepository roomRepository;
     private final HotelService hotelService;
     private final RoomMapper roomMapper;
 
+    @Transactional
     public RoomResponse create(RoomRequest roomRequest) {
         checkRoomNumber(roomRequest);
         Hotel hotel = hotelService.getById(roomRequest.getHotelId());
@@ -44,6 +48,7 @@ public class RoomService {
         return roomMapper.roomToResponse(getById(id));
     }
 
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public RoomResponse update(long id, RoomRequest roomRequest) {
         checkRoomNumber(roomRequest);
         Room existedRoom = getById(id);
@@ -54,6 +59,7 @@ public class RoomService {
         return roomMapper.roomToResponse(roomRepository.save(updatedRoom));
     }
 
+    @Transactional
     public void delete(long id) {
         roomRepository.deleteById(id);
     }

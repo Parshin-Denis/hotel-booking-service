@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgres:
-    image: postgres:12.3
+    image: postgres:16.2
     ports:
       - "5432:5432"
     environment:
@@ -19,13 +19,13 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: user
       MONGO_INITDB_DATABASE: user_db
   zookeeper:
-    image: confluentinc/cp-zookeeper:6.2.0
+    image: confluentinc/cp-zookeeper:7.6.0
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
     ports:
       - "2181:2181"
   kafka:
-    image: confluentinc/cp-kafka:6.2.0
+    image: confluentinc/cp-kafka:7.6.0
     depends_on:
       - zookeeper
     ports:

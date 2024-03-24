@@ -2,7 +2,10 @@ package com.example.HotelBookingService.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Entity(name = "bookings")
@@ -11,7 +14,7 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private LocalDate arrivalDate;
 
@@ -24,4 +27,10 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room;
+
+    @CreationTimestamp
+    private Instant creationTime;
+
+    @UpdateTimestamp
+    private Instant updateTime;
 }

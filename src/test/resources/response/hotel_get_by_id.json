@@ -1,0 +1,12 @@
+{
+  "address": "address1",
+  "city": "city1",
+  "creationTime": "2024-03-11T10:15:30Z",
+  "distance": 1200,
+  "headline": "head1",
+  "id": 1,
+  "name": "hotel1",
+  "rating": 3.5,
+  "ratingsAmount": 41,
+  "updateTime": "2024-03-11T10:15:30Z"
+}

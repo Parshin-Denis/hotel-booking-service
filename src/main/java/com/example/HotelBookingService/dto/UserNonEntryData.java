@@ -2,9 +2,13 @@ package com.example.HotelBookingService.dto;
 
 import lombok.Data;
 
+import java.time.Instant;
+
 @Data
 public class UserNonEntryData {
 
-    long id;
+    private long id;
+
+    private Instant creationTime;
 
 }

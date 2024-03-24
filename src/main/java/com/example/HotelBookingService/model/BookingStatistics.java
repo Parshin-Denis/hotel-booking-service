@@ -12,15 +12,15 @@ import java.time.LocalDate;
 public class BookingStatistics {
 
     @Id
-    private long id;
+    private Long id;
 
     private Instant reservationTime;
 
-    private long userId;
+    private Long userId;
 
     private LocalDate arrivalDate;
 
     private LocalDate departDate;
 
-    private long hotelId;
+    private Long hotelId;
 }

@@ -13,11 +13,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.MessageFormat;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class UserService {
 
     private final UserRepository userRepository;
@@ -28,10 +31,11 @@ public class UserService {
 
     private final KafkaTemplate<String, UserMessage> userMessageKafkaTemplate;
 
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public UserResponse create(UserRequest userRequest) {
         if (userRepository.existsByNameAndEmail(userRequest.getName(), userRequest.getEmail())) {
             throw new RequestParameterException(
-                    MessageFormat.format("Пользователь с именем {0} и почтой {1] уже существует",
+                    MessageFormat.format("Пользователь с именем {0} и почтой {1} уже существует",
                             userRequest.getName(), userRequest.getEmail())
             );
         }
@@ -58,6 +62,7 @@ public class UserService {
         return userMapper.userToResponse(getById(id));
     }
 
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public UserResponse update(long id, UserRequest userRequest) {
         User existedUser = getById(id);
         User updatedUser = userMapper.requestToUser(userRequest,
@@ -68,6 +73,7 @@ public class UserService {
         );
     }
 
+    @Transactional
     public void delete(long id) {
         userRepository.deleteById(id);
     }
