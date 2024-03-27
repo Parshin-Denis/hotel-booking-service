@@ -1,4 +1,4 @@
-package controller;
+package com.example.booking.controller;
 
 import com.example.booking.AbstractTest;
 import com.example.booking.StringTestUtils;
@@ -31,24 +31,24 @@ public class BookingControllerTest extends AbstractTest {
     @WithUserDetails(userDetailsServiceBeanName = "userDetailsServiceImpl", value = "User1",
             setupBefore = TestExecutionEvent.TEST_EXECUTION)
     public void whenBookRoom_thenReturnBooking() throws Exception {
-        Assertions.assertEquals(10, bookingRepository.count());
+        assertEquals(10, bookingRepository.count());
         BookingRequest request = new BookingRequest();
         request.setRoomId(5);
         request.setArrivalDate(LocalDate.of(2024, 4,15));
         request.setDepartDate(LocalDate.of(2024,4,18));
 
 
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.post("/api/booking")
+        String actualResponse = mockMvc.perform(post("/api/booking")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
 
         String expectedResponse = StringTestUtils.readStringFromResource("response/booking_create.json");
 
-        Assertions.assertEquals(11, bookingRepository.count());
+        assertEquals(11, bookingRepository.count());
         JsonAssert.assertJsonEquals(expectedResponse, actualResponse,
                 JsonAssert.whenIgnoringPaths("creationTime", "updateTime"));
     }
@@ -57,8 +57,8 @@ public class BookingControllerTest extends AbstractTest {
     @DisplayName("Test of get all bookings")
     @WithMockUser(roles = {"ADMIN"})
     public void whenGetAllBookings_thenReturnBookingList() throws Exception {
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/booking"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+        String actualResponse = mockMvc.perform(get("/api/booking"))
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();

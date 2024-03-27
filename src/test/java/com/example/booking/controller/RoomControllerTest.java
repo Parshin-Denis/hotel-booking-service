@@ -1,4 +1,4 @@
-package controller;
+package com.example.booking.controller;
 
 import com.example.booking.AbstractTest;
 import com.example.booking.StringTestUtils;
@@ -29,8 +29,8 @@ public class RoomControllerTest extends AbstractTest {
     @DisplayName("Test of get room by ID")
     @WithMockUser
     public void whenGetRoomById_thenReturnRoom() throws Exception {
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/room/{id}", ID_ROOM_TO_TEST))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+        String actualResponse = mockMvc.perform(get("/api/room/{id}", ID_ROOM_TO_TEST))
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -45,7 +45,7 @@ public class RoomControllerTest extends AbstractTest {
     @WithUserDetails(userDetailsServiceBeanName = "userDetailsServiceImpl", value = "Admin",
             setupBefore = TestExecutionEvent.TEST_EXECUTION)
     public void whenCreateRoom_thenReturnRoom() throws Exception {
-        Assertions.assertEquals(10, roomRepository.count());
+        assertEquals(10, roomRepository.count());
 
         RoomRequest request = new RoomRequest();
         request.setName("New name");
@@ -55,10 +55,10 @@ public class RoomControllerTest extends AbstractTest {
         request.setMaxPeopleNumber(2);
         request.setHotelId(2);
 
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.post("/api/room")
+        String actualResponse = mockMvc.perform(post("/api/room")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -67,7 +67,7 @@ public class RoomControllerTest extends AbstractTest {
 
         JsonAssert.assertJsonEquals(expectedResponse, actualResponse,
                 JsonAssert.whenIgnoringPaths("creationTime", "updateTime"));
-        Assertions.assertEquals(11, roomRepository.count());
+        assertEquals(11, roomRepository.count());
     }
 
     @Test
@@ -84,10 +84,10 @@ public class RoomControllerTest extends AbstractTest {
         request.setMaxPeopleNumber(3);
         request.setHotelId(2);
 
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.put("/api/room/{id}", ID_ROOM_TO_TEST)
+        String actualResponse = mockMvc.perform(put("/api/room/{id}", ID_ROOM_TO_TEST)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -103,19 +103,19 @@ public class RoomControllerTest extends AbstractTest {
     @WithUserDetails(userDetailsServiceBeanName = "userDetailsServiceImpl", value = "Admin",
             setupBefore = TestExecutionEvent.TEST_EXECUTION)
     public void whenDeleteRoom_thenReturnNoContent() throws Exception {
-        Assertions.assertEquals(10, roomRepository.count());
+        assertEquals(10, roomRepository.count());
 
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/room/{id}", ID_ROOM_TO_TEST))
-                .andExpect(MockMvcResultMatchers.status().isNoContent());
+        mockMvc.perform(delete("/api/room/{id}", ID_ROOM_TO_TEST))
+                .andExpect(status().isNoContent());
 
-        Assertions.assertEquals(9, roomRepository.count());
+        assertEquals(9, roomRepository.count());
     }
 
     @Test
     @DisplayName("Rooms filter test")
     @WithMockUser
     public void whenFilterRooms_thenReturnFilteredList() throws Exception {
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/room/filter")
+        String actualResponse = mockMvc.perform(get("/api/room/filter")
                         .param("name", "%room%")
                         .param("minPrice", "2000")
                         .param("maxPrice", "4000")
@@ -123,7 +123,7 @@ public class RoomControllerTest extends AbstractTest {
                         .param("arrivalDate", "2024-04-03")
                         .param("departDate", "2024-04-06")
                         .param("hotelId", "1"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();

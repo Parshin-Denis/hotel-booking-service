@@ -1,4 +1,4 @@
-package controller;
+package com.example.booking.controller;
 
 import com.example.booking.AbstractTest;
 import com.example.booking.StringTestUtils;
@@ -29,8 +29,8 @@ public class HotelControllerTest extends AbstractTest {
     @DisplayName("Test of get all hotels")
     @WithMockUser
     public void whenGetAllHotels_thenReturnHotelsList() throws Exception {
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/hotel"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+        String actualResponse = mockMvc.perform(get("/api/hotel"))
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -44,7 +44,7 @@ public class HotelControllerTest extends AbstractTest {
     @DisplayName("Hotels filter test")
     @WithMockUser
     public void whenFilterHotels_thenReturnFilteredList() throws Exception {
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/hotel/filter")
+        String actualResponse = mockMvc.perform(get("/api/hotel/filter")
                         .param("name", "%hotel%")
                         .param("headline", "%head%")
                         .param("city", "%city%")
@@ -52,7 +52,7 @@ public class HotelControllerTest extends AbstractTest {
                         .param("distance", "1500")
                         .param("rating", "3.7")
                         .param("ratingsAmount", "40"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -66,8 +66,8 @@ public class HotelControllerTest extends AbstractTest {
     @DisplayName("Test of get hotel by ID")
     @WithMockUser
     public void whenGetHotelById_thenReturnHotel() throws Exception {
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/hotel/{id}", ID_HOTEL_TO_TEST))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+        String actualResponse = mockMvc.perform(get("/api/hotel/{id}", ID_HOTEL_TO_TEST))
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -82,7 +82,7 @@ public class HotelControllerTest extends AbstractTest {
     @WithUserDetails(userDetailsServiceBeanName = "userDetailsServiceImpl", value = "Admin",
             setupBefore = TestExecutionEvent.TEST_EXECUTION)
     public void whenCreateHotel_thenReturnHotel() throws Exception {
-        Assertions.assertEquals(9, hotelRepository.count());
+        assertEquals(9, hotelRepository.count());
 
         HotelRequest request = new HotelRequest();
         request.setName("New name");
@@ -91,10 +91,10 @@ public class HotelControllerTest extends AbstractTest {
         request.setAddress("New address");
         request.setDistance(1000);
 
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.post("/api/hotel")
+        String actualResponse = mockMvc.perform(post("/api/hotel")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -103,7 +103,7 @@ public class HotelControllerTest extends AbstractTest {
 
         JsonAssert.assertJsonEquals(expectedResponse, actualResponse,
                 JsonAssert.whenIgnoringPaths("creationTime", "updateTime"));
-        Assertions.assertEquals(10, hotelRepository.count());
+        assertEquals(10, hotelRepository.count());
     }
 
     @Test
@@ -119,10 +119,10 @@ public class HotelControllerTest extends AbstractTest {
         request.setAddress("New address");
         request.setDistance(1000);
 
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.put("/api/hotel/{id}", ID_HOTEL_TO_TEST)
+        String actualResponse = mockMvc.perform(put("/api/hotel/{id}", ID_HOTEL_TO_TEST)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -137,9 +137,9 @@ public class HotelControllerTest extends AbstractTest {
     @DisplayName("Hotel rate test")
     @WithMockUser
     public void whenRateHotel_thenReturnHotel() throws Exception {
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/hotel/rate/{id}", ID_HOTEL_TO_TEST)
+        String actualResponse = mockMvc.perform(get("/api/hotel/rate/{id}", ID_HOTEL_TO_TEST)
                         .param("mark", "1"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -154,11 +154,11 @@ public class HotelControllerTest extends AbstractTest {
     @WithUserDetails(userDetailsServiceBeanName = "userDetailsServiceImpl", value = "Admin",
             setupBefore = TestExecutionEvent.TEST_EXECUTION)
     public void whenDeleteHotel_thenReturnNoContent() throws Exception {
-        Assertions.assertEquals(9, hotelRepository.count());
+        assertEquals(9, hotelRepository.count());
 
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/hotel/{id}", ID_HOTEL_TO_TEST))
-                .andExpect(MockMvcResultMatchers.status().isNoContent());
+        mockMvc.perform(delete("/api/hotel/{id}", ID_HOTEL_TO_TEST))
+                .andExpect(status().isNoContent());
 
-        Assertions.assertEquals(8, hotelRepository.count());
+        assertEquals(8, hotelRepository.count());
     }
 }

@@ -1,4 +1,4 @@
-package controller;
+package com.example.booking.controller;
 
 import com.example.booking.AbstractTest;
 import com.example.booking.StringTestUtils;
@@ -29,24 +29,24 @@ public class UserControllerTest extends AbstractTest {
     @Test
     @DisplayName("User creation test")
     public void whenCreateUser_thenReturnNewUser() throws Exception {
-        Assertions.assertEquals(3, userRepository.count());
+        assertEquals(3, userRepository.count());
         UserRequest request = new UserRequest();
         request.setName("newUser");
         request.setEmail("newuser@email.com");
         request.setPassword("12345");
         request.setRole(RoleType.ROLE_USER);
 
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.post("/api/user")
+        String actualResponse = mockMvc.perform(post("/api/user")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
 
         String expectedResponse = StringTestUtils.readStringFromResource("response/user_create.json");
 
-        Assertions.assertEquals(4, userRepository.count());
+        assertEquals(4, userRepository.count());
         JsonAssert.assertJsonEquals(expectedResponse, actualResponse,
                 JsonAssert.whenIgnoringPaths("password", "creationTime", "updateTime"));
     }
@@ -55,8 +55,8 @@ public class UserControllerTest extends AbstractTest {
     @DisplayName("Test of get user by ID")
     @WithMockUser
     public void whenGetUserById_thenReturnUser() throws Exception {
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.get("/api/user/{id}", ID_USER_TO_TEST))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+        String actualResponse = mockMvc.perform(get("/api/user/{id}", ID_USER_TO_TEST))
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -79,10 +79,10 @@ public class UserControllerTest extends AbstractTest {
         request.setEmail("new@email.com");
         request.setRole(RoleType.ROLE_USER);
 
-        String actualResponse = mockMvc.perform(MockMvcRequestBuilders.put("/api/user/{id}", ID_USER_TO_TEST)
+        String actualResponse = mockMvc.perform(put("/api/user/{id}", ID_USER_TO_TEST)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
@@ -97,9 +97,9 @@ public class UserControllerTest extends AbstractTest {
     @WithUserDetails(userDetailsServiceBeanName = "userDetailsServiceImpl", value = "Admin",
             setupBefore = TestExecutionEvent.TEST_EXECUTION)
     public void whenDeleteUser_thenReturnNoContent() throws Exception {
-        Assertions.assertEquals(3, userRepository.count());
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/user/{id}", ID_USER_TO_TEST))
-                .andExpect(MockMvcResultMatchers.status().isNoContent());
-        Assertions.assertEquals(2, userRepository.count());
+        assertEquals(3, userRepository.count());
+        mockMvc.perform(delete("/api/user/{id}", ID_USER_TO_TEST))
+                .andExpect(status().isNoContent());
+        assertEquals(2, userRepository.count());
     }
 }
